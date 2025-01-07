@@ -36,10 +36,13 @@ RUN python -m pip install -r custom_nodes/was-node-suite-comfyui/requirements.tx
 RUN git clone https://github.com/city96/ComfyUI-GGUF.git custom_nodes/ComfyUI-GGUF
 RUN python -m pip install -r custom_nodes/ComfyUI-GGUF/requirements.txt
 
-RUN git clone https://github.com/sipie800/ComfyUI-PuLID-Flux-Enhanced.git custom_nodes/ComfyUI-PuLID-Flux-Enhanced
+# https://github.com/sipie800/ComfyUI-PuLID-Flux-Enhanced/pull/51
+RUN git clone https://github.com/Slickytail/ComfyUI-PuLID-Flux-Enhanced-Fix-Forward.git custom_nodes/ComfyUI-PuLID-Flux-Enhanced
+#RUN git clone https://github.com/sipie800/ComfyUI-PuLID-Flux-Enhanced.git custom_nodes/ComfyUI-PuLID-Flux-Enhanced
 RUN python -m pip install -r custom_nodes/ComfyUI-PuLID-Flux-Enhanced/requirements.txt
 
 #RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/ComfyUI-Manager
 #COPY style-face-transfer.json .
 
+ENV HF_HOME=/ComfyUI/models/hf_home
 CMD ["python", "main.py", "--listen"]
